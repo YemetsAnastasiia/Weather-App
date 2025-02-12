@@ -1,6 +1,5 @@
 import axios, { AxiosError } from "axios"
 import {
-    WeatherErrorResponse,
   WeatherSliceData,
   WeatherSliceinitialState,
 } from "./types"
@@ -13,6 +12,7 @@ const weatherInitialState: WeatherSliceinitialState = {
   cityHistory: [],
   error: undefined,
   status: "default",
+ 
 }
 // API ключ
 const APP_ID = "a8ba3cb30484c5beed1b9691ca576c99"
@@ -39,9 +39,11 @@ export const weatherSlice = createAppSlice({
 
           return weatherData // Возвращаем полученные данные
         } catch (error) {
-            const axiosError = error as AxiosError<WeatherErrorResponse>;
-            const errorMessage = axiosError.response?.data?.message || "City not found. Please try again.";
-            return thunkApi.rejectWithValue(errorMessage); 
+          
+            const axiosError = error as AxiosError;
+            const errorMessage = axiosError.response?.data?.message ?? "City not found. Please try again.";
+           /*  const errorMessage = axiosError.response?.data?.message || "City not found. Please try again."; */
+            return thunkApi.rejectWithValue(errorMessage);
         }
       },
       {
@@ -63,7 +65,9 @@ export const weatherSlice = createAppSlice({
     clearError: create.reducer((state: WeatherSliceinitialState) => {
       state.error = null
     }),
+    deliteWeatherCards : create.reducer(() => weatherInitialState)
   }),
+ 
   selectors: {
     weatherData: (state: WeatherSliceinitialState) => state,
   },

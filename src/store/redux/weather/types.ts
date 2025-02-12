@@ -6,6 +6,7 @@ export interface WeatherSliceData {
     temperature: number;
     description: string;
     icon: string;
+    
   }
   
   export interface WeatherSliceinitialState {

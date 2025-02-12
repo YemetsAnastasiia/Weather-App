@@ -11,7 +11,10 @@ import {
   Main,
 } from "./styles"
 
+
+
 function Layout({ children }: LayoutProps) {
+
   const navigate = useNavigate()
 
   const goToHomePage = () => navigate("/")
@@ -21,6 +24,7 @@ function Layout({ children }: LayoutProps) {
       <Header>
         <HeaderLogoContainer onClick={goToHomePage}>
           <HeaderLogoText>Weather App</HeaderLogoText>
+          </HeaderLogoContainer>
           <NavContainer>
             <StyledNavLink
               style={({ isActive }: { isActive: boolean }) => ({
@@ -39,7 +43,6 @@ function Layout({ children }: LayoutProps) {
               History
             </StyledNavLink>
           </NavContainer>
-        </HeaderLogoContainer>
       </Header>
       <Main>{children}</Main>
     </LayoutWrapper>

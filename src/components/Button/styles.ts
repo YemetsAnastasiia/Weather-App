@@ -5,17 +5,18 @@ interface MainButtonDisable {
 }
 
 export const MainButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-width: 120px;
- height: 60px;
-  padding: 20px;
-  gap: 10px;
+  height: 40px;
+ /*  padding: 20px; */
   // условие когда кнопка будет серой,а конда синей
-  background-color: ${({ disabled }) =>
-    disabled ? "#bcadad" : "rgb(66, 72, 253)"};
+  background-color: ${({ disabled }) => (disabled ? "#bcadad" : "#5274db")};
   border: none;
-  border-radius: 26px;
-  font-size: 24px;
-  color: rgb(224, 224, 237);
+  border-radius: 24px;
+  font-size: 16px;
+  color: white;
 
   &:disabled {
     /* background-color: #bcadad; */

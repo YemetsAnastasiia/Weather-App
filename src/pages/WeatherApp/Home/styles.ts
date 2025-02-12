@@ -1,19 +1,19 @@
-import styled from "@emotion/styled";
+import styled from "@emotion/styled"
 
 export const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  flex: 1;
   justify-content: center;
-  align-items: center;
+  padding: 20px;
+  flex: 1;
 `
 
 export const CityForm = styled.form`
   display: flex;
-  position: relative;
-  bottom: 150px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 20px;
-  margin: 40px;
   min-width: 710px;
   min-height: 50px;
   height: fit-content;
@@ -21,14 +21,22 @@ export const CityForm = styled.form`
 `
 
 export const InputWrapper = styled.div`
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 `
 
-export const WeatherCard = styled.div`
-background-color: #f0f0f0;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 500px;
-  text-align: center;
+export const SpinnerWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const ResultWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 `

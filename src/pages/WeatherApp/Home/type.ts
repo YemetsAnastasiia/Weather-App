@@ -1,3 +1,3 @@
 export interface CityName {
-    city: string,
-  }
+  city: string
+}

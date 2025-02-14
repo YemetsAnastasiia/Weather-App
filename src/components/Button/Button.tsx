@@ -1,5 +1,5 @@
-import { ButtonProps } from "./types";
-import { MainButton } from "./styles";
+import { ButtonProps } from "./types"
+import { MainButton } from "./styles"
 
 function Button({
   name = "SEND",
@@ -7,11 +7,10 @@ function Button({
   onClick,
   disabled,
 }: ButtonProps) {
-  
   return (
     <MainButton type={type} onClick={onClick} disabled={disabled}>
       {name}
     </MainButton>
-  );
+  )
 }
-export default Button;
+export default Button

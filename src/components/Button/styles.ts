@@ -10,7 +10,6 @@ export const MainButton = styled.button`
   justify-content: center;
   min-width: 120px;
   height: 40px;
- /*  padding: 20px; */
   // условие когда кнопка будет серой,а конда синей
   background-color: ${({ disabled }) => (disabled ? "#bcadad" : "#5274db")};
   border: none;

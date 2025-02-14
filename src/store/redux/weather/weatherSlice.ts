@@ -1,5 +1,6 @@
 import axios, { AxiosError } from "axios"
 import {
+  WeatherErrorResponse,
   WeatherSliceData,
   WeatherSliceinitialState,
 } from "./types"
@@ -12,9 +13,8 @@ const weatherInitialState: WeatherSliceinitialState = {
   cityHistory: [],
   error: undefined,
   status: "default",
- 
-}
-// API ключ
+ }
+
 const APP_ID = "a8ba3cb30484c5beed1b9691ca576c99"
 
 export const weatherSlice = createAppSlice({
@@ -27,8 +27,7 @@ export const weatherSlice = createAppSlice({
           const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${APP_ID}&units=metric`
           const response = await axios.get(apiUrl)
 
-          
-          // Формируем данные о текущем городе
+        
           const weatherData: WeatherSliceData = {
             id: v4(),
             name: response.data.name,
@@ -36,29 +35,29 @@ export const weatherSlice = createAppSlice({
             description: response.data.weather[0].description,
             icon: response.data.weather[0].icon,
           }
+          return weatherData 
 
-          return weatherData // Возвращаем полученные данные
         } catch (error) {
           
-            const axiosError = error as AxiosError;
+            const axiosError = error as AxiosError<WeatherErrorResponse>;
             const errorMessage = axiosError.response?.data?.message ?? "City not found. Please try again.";
-           /*  const errorMessage = axiosError.response?.data?.message || "City not found. Please try again."; */
             return thunkApi.rejectWithValue(errorMessage);
         }
+
       },
       {
         pending: (state: WeatherSliceinitialState) => {
-          state.status = "loading" // Статус загрузки
-          state.error = null // Сбрасываем ошибки
+          state.status = "loading" 
+          state.error = null 
         },
         fulfilled: (state: WeatherSliceinitialState, action: any) => {
-          state.currentCity = action.payload // Сохраняем текущий город
-          state.cityHistory.push(action.payload) // Добавляем город в историю
-          state.status = "success" // Устанавливаем статус успеха
+          state.currentCity = action.payload 
+          state.cityHistory.push(action.payload) 
+          state.status = "success" 
         },
         rejected: (state: WeatherSliceinitialState, action: any) => {
-          state.error = action.payload // Сохраняем ошибку
-          state.status = "error" // Устанавливаем статус ошибки
+          state.error = action.payload
+          state.status = "error" 
         },
       },
     ),
